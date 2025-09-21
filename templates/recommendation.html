@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: #563d7c;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #fff !important;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #563d7c;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .form-control {
+            border-radius: 0.5rem;
+        }
+
+        .btn-warning {
+            background-color: #ff9800;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background-color: #e68900;
+        }
+
+        .card {
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-body img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body h4,
+        .card-body h5 {
+            color: #563d7c;
+            margin: 0.5rem 0;
+        }
+
+        .container {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">Book Recommendation System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/recommendation">Recommendation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/my_books">my_books</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Recommended Books</h1>
+                <form action="/recommend_books" method="post" class="my-4">
+                    <div class="input-group">
+                        <input name="user_input" type="text" class="form-control" placeholder="Enter a genre, author, or book name">
+                        <div class="input-group-append">
+                            <button class="btn btn-warning" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Updated Card Section -->
+            {% if data %}
+            {% for i in data %}
+            <div class="col-md-4 col-lg-3 my-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <!-- Book Image with Amazon Link -->
+                        <a href="https://www.amazon.com/s?k={{ i[0]|urlencode }}" target="_blank">
+                            <img class="card-img-top mb-3" src="{{ i[2] }}" alt="Book Image">
+                        </a>
+
+                        <!-- Book Title with Amazon Link -->
+                        <h4 class="card-title">
+                            <a href="https://www.amazon.com/s?k={{ i[0]|urlencode }}" target="_blank" 
+                               style="color: #563d7c; text-decoration: none;">
+                                {{ i[0] }}
+                            </a>
+                        </h4>
+
+                        <!-- Book Author -->
+                        <h5 class="card-text">{{ i[1] }}</h5>
+
+                        <!-- "View on Amazon" Button -->
+                        <form action="/save_book" method="POST">
+                            <input type="hidden" name="book_title" value="{{ i[0] }}">
+                            <input type="hidden" name="book_author" value="{{ i[1] }}">
+                            <input type="hidden" name="book_url" value="https://www.amazon.com/s?k={{ '+'.join(i[0].split()) }}">
+                            <button type="submit" class="btn btn-success btn-sm">Save and Open in Amazon</button>
+                            <a href="https://www.amazon.com/s?k={{ '+'.join(i[0].split()) }}" target="_blank" class="btn btn-primary btn-sm">Open in Amazon</a>
+                        </form>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <!-- End Updated Card Section -->
+        </div>
+    </div>
+    
+</body>
+
+</html>

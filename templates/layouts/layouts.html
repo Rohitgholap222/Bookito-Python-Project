@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation System</title>
+    <link rel="icon" type="image/png" href="/images/book_favicon.png">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        
+        body {
+            background-image: url("img/pexels-minan1398-694740.jpg");
+        }
+
+        .navbar {
+            background-color: #563d7c;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #fff !important;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #563d7c;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .card {
+            border: none;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #563d7c;
+        }
+
+        .card-text {
+            color: #6c757d;
+        }
+
+        .votes,
+        .rating {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    {% block nav %}
+
+    {% endblock %}
+
+    {% block content %}
+    
+    {% endblock %}
+</body>
+</html>

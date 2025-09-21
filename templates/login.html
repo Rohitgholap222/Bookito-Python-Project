@@ -1,0 +1,113 @@
+<!--Store this code in 'login.html' file inside the 'templates' folder-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.pexels.com/photos/2908984/pexels-photo-2908984.jpeg?auto=compress&cs=tinysrgb&w=600');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .log {
+
+            background-color: rgba(255, 250, 240, 0.9); /* Light translucent background */
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .log h3 {
+            font-size: 1.5rem;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .textbox {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .msg {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .worddark {
+            font-size: 0.9rem;
+            color: #333;
+            text-align: center;
+        }
+
+        .worddark a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .worddark a:hover {
+            text-decoration: underline;
+        }
+		.logintop {
+			text-align: right;
+		}
+        #h{
+            color: rgb(217, 12, 12);
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <form action="{{ url_for('login')}}" method="post" class="log">
+       <center>
+        <div class="h">
+            <p>Bookito : The recommender</p>
+        </div>
+       </center> 
+       
+        <div class="logintop">
+            <h3> Sign-in to Continue </h3>
+        </div>
+        <div class="loginbottom">
+            <div class="msg">{{ msg }}</div>
+            <input type="text" name="username" placeholder="Username" class="textbox" id="username" required>
+            <input type="password" name="password" placeholder="Password" class="textbox" id="password" required>
+            <input type="submit" class="btn" value="Login">
+            <p class="worddark">New to this page? <a href="{{ url_for('register') }}">Register here</a></p>
+        </div>
+    </form>
+</body>
+</html>

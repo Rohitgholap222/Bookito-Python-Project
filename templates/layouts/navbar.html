@@ -1,0 +1,30 @@
+{% extends 'layouts/layouts.html' %}
+
+
+{% block nav %}
+
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">Book Recommendation System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/recommendation">Recommendation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/my_books">my_books</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+{% endblock %}

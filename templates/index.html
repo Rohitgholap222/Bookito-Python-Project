@@ -1,0 +1,23 @@
+{% extends 'layouts/navbar.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="mb-4">Top Books</h1>
+    <div class="row">
+        {% for book in books %}
+            <div class="col-md-6 col-lg-3 my-3">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ book['Image-URL-M'] or 'placeholder.jpg' }}" alt="Book Cover" loading="lazy">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ book['Book-Title'] }}</h5>
+                        <p class="card-text">Author: {{ book['Book-Author'] }}</p>
+                        <p class="card-text">Publisher: {{ book['Publisher'] }}</p>
+                        <p class="card-text votes">Votes: {{ book['Num_rating'] }}</p>
+                        <p class="card-text rating">Rating: {{ book['Avg_rating'] }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
